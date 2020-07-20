@@ -16,8 +16,7 @@
 </template>
 
 <script>
-import mxgraph from '@graph';
-const { mxClient, mxGraphModel, mxGraph } = mxgraph;
+import { mxGraphModel as MxGraphModel, mxGraph as MxGraph, mxClient as MxClient } from 'mxgraph/javascript/mxClient';
 export default {
   name: 'HelloWorld',
   data: () => ({
@@ -30,15 +29,15 @@ export default {
     init() {
       var container = this.$refs.pannel;
 
-      if (!mxClient.isBrowserSupported()) {
+      if (!MxClient.isBrowserSupported()) {
         this.browserError = true;
         return;
       }
 
       // 容器初始化，构造一个图标模型
-      var model = new mxGraphModel();
+      var model = new MxGraphModel();
       // 创建一个图标的dom
-      this._graph = new mxGraph(container, model);
+      this._graph = new MxGraph(container, model);
       // 获取当前图的父节点
       var parent = this._graph.getDefaultParent();
       // 在beginUpdate和endUpdate之间做的改变，在视图上是异步改变的，一般在有多次绘图过程前后使用

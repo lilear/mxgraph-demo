@@ -22,9 +22,19 @@ const routes = [
         component: () => import('../components/GraphToXml.vue')
       },
       {
-        path: '/playground',
-        name: 'Playground',
-        component: () => import('../components/Playground.vue')
+        path: '/styleSheet',
+        name: 'StyleSheet',
+        component: () => import('../components/StyleSheet.vue')
+      },
+      {
+        path: '/hustomToolbar',
+        name: 'HtmlToolbar',
+        component: () => import('../components/HtmlToolbar/index.vue')
+      },
+      {
+        path: '/shapeToolbar',
+        name: 'ShapeToolbar',
+        component: () => import('../components/ShapeToolbar/index.vue')
       }
     ]
   }

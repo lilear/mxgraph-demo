@@ -51,9 +51,11 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: 'lightbulb_outline', text: 'Hello world', link: 'HelloWorld' },
+      { icon: 'account_balance', text: 'Hello world', link: 'HelloWorld' },
       { icon: 'import_export', text: 'Graph to xml', link: 'GraphToXml' },
-      { icon: 'view_quilt', text: 'Playground', link: 'Playground' }
+      { icon: 'style', text: 'Style sheet', link: 'StyleSheet' },
+      { icon: 'view_quilt', text: 'Html Toolbar', link: 'HtmlToolbar' },
+      { icon: 'view_quilt', text: 'Shape Toolbar', link: 'ShapeToolbar' }
     ]
   })
 };

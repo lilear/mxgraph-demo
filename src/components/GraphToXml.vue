@@ -24,8 +24,7 @@
 </template>
 
 <script>
-import mxgraph from '@graph';
-const { mxClient, mxGraphModel, mxGraph, mxUtils, mxCodec } = mxgraph;
+import { mxClient, mxGraphModel, mxGraph, mxUtils, mxCodec } from 'mxgraph/javascript/mxClient';
 export default {
   name: 'GraphToXml',
   data: () => ({
@@ -49,6 +48,7 @@ export default {
       this._graph = new mxGraph(container, model);
 
       var parent = this._graph.getDefaultParent();
+
       model.beginUpdate();
       try {
         var v1 = this._graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30, 'node');
