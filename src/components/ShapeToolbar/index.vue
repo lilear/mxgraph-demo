@@ -4,6 +4,7 @@
 
 <script>
 import { Graph } from '@graph';
+import { toolbarItems } from './toolbar';
 import {
   mxToolbar as MxToolbar,
   mxEvent as MxEvent,
@@ -99,7 +100,6 @@ export default {
       this.keyHandler = new MxKeyHandler(this.graph);
 
       this.keyHandler.bindControlKey(46, () => {
-        console.log(11);
         this.undo();
       });
       this.keyHandler.bindControlKey(89, () => {
@@ -114,7 +114,7 @@ export default {
             deleteSet.add(tmpEdge.target);
             this.findDeleteCell(tmpEdge.target, deleteSet);
           }
-        })
+        });
       }
     },
     deleteCells({ cells = [], includeEdges = false, multilevel = true }) {
@@ -155,12 +155,9 @@ export default {
         });
       };
 
-      addVertex(require('@assets/mxgraph/images/squre.png'), 40, 40, 'node');
-      addVertex(require('@assets/mxgraph/images/round.png'), 40, 40, 'node;shape=ellipse');
-      addVertex(require('@assets/mxgraph/images/oval.png'), 100, 40, 'node;shape=ellipse');
-      addVertex(require('@assets/mxgraph/images/triangle.png'), 40, 40, 'node;shape=triangle;direction=north');
-      addVertex(require('@assets/mxgraph/images/rhombus.png'), 40, 40, 'shape=rhombus');
-      addVertex(require('@assets/mxgraph/images/cylinder.png'), 40, 40, 'shape=cylinder');
+      toolbarItems.map((item) => {
+        addVertex(item.icon, item.width, item.height, item.style);
+      });
     },
     addToolbarItem(graph, toolbar, prototype, image) {
       let funct = function(graph, evt, cell, x, y) {

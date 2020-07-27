@@ -35,6 +35,11 @@ const routes = [
         path: '/shapeToolbar',
         name: 'ShapeToolbar',
         component: () => import('../components/ShapeToolbar/index.vue')
+      },
+      {
+        path: '/editNode',
+        name: 'EditNode',
+        component: () => import('../components/EditNode/index.vue')
       }
     ]
   }

@@ -34,5 +34,11 @@ module.exports = {
       .use('url-loader')
       .loader('url-loader')
       .tap((options) => Object.assign(options, { limit: 3 }));
+
+    config.module
+      .rule('xml')
+      .test(/\.xml$/)
+      .use('xml-loader')
+      .loader('xml-loader');
   }
 };

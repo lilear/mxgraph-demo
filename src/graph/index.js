@@ -18,8 +18,12 @@ import {
   mxUtils,
   mxImageExport,
   mxXmlCanvas2D,
-  mxCodecRegistry
+  mxCodecRegistry,
+  mxStencilRegistry
 } from 'mxgraph/javascript/mxClient';
+import './stencil/basic.js';
+
+const STENCIL_PATH = '/static';
 
 Object.assign(mxEvent, {
   EDGE_START_MOVE: 'edgeStartMove',
@@ -37,6 +41,7 @@ export class PokeElement {
   }
 }
 
+// 可以在这里扩展 mxGraph的相关扩展
 export class Graph extends mxGraph {
   static getStyleDict(cell) {
     return cell
@@ -122,7 +127,8 @@ export class Graph extends mxGraph {
     // 编辑时按 escape 后完成输入
     mxCellEditor.prototype.escapeCancelsEditing = false;
     // 失焦时完成输入
-    mxCellEditor.prototype.blurEnabled = true;
+    // mxCellEditor.prototype.blurEnabled = true;
+    mxCellEditor.prototype.autoSize = true;
 
     // 禁止节点折叠
     this.foldingEnabled = false;
@@ -152,6 +158,9 @@ export class Graph extends mxGraph {
     };
     this.getStylesheet().putCellStyle('normalType', normalTypeStyle);
 
+    mxStencilRegistry.libraries['basic'] = [STENCIL_PATH + '/basic.xml'];
+    console.log(mxStencilRegistry.getStencil('mxgraph.basic.smiley'));
+
     const nodeStyle = {
       // 图片样式参考这个例子
       // https://github.com/jinzhanye/mxgraph-demos/blob/master/src/06.image.html
@@ -163,19 +172,19 @@ export class Graph extends mxGraph {
       [mxConstants.STYLE_STROKECOLOR]: '#333333',
       [mxConstants.STYLE_FONTCOLOR]: '#333333',
       [mxConstants.STYLE_FILLCOLOR]: '#ffffff',
-      //
       [mxConstants.STYLE_LABEL_BACKGROUNDCOLOR]: 'none',
 
       [mxConstants.STYLE_ALIGN]: mxConstants.ALIGN_CENTER,
-      [mxConstants.STYLE_VERTICAL_ALIGN]: mxConstants.ALIGN_TOP,
+      [mxConstants.STYLE_VERTICAL_ALIGN]: mxConstants.ALIGN_CENTER,
       [mxConstants.STYLE_IMAGE_ALIGN]: mxConstants.ALIGN_CENTER,
       [mxConstants.STYLE_IMAGE_VERTICAL_ALIGN]: mxConstants.ALIGN_TOP,
+      [mxConstants.STYLE_WHITE_SPACE]: mxConstants.STYLE_WHITE_SPACE
 
       // 设置图片
       // [mxConstants.STYLE_IMAGE_WIDTH]: '72',
       // [mxConstants.STYLE_IMAGE_HEIGHT]: '72',
       // [mxConstants.STYLE_SPACING_TOP]: '100',
-      [mxConstants.STYLE_SPACING]: '8'
+      // [mxConstants.STYLE_SPACING]: '8'
     };
     this.getStylesheet().putCellStyle('node', nodeStyle);
 

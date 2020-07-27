@@ -55,7 +55,8 @@ export default {
       { icon: 'import_export', text: 'Graph to xml', link: 'GraphToXml' },
       { icon: 'style', text: 'Style sheet', link: 'StyleSheet' },
       { icon: 'view_quilt', text: 'Html Toolbar', link: 'HtmlToolbar' },
-      { icon: 'view_quilt', text: 'Shape Toolbar', link: 'ShapeToolbar' }
+      { icon: 'view_quilt', text: 'Shape Toolbar', link: 'ShapeToolbar' },
+      { icon: 'edit', text: 'Edit Node', link: 'EditNode' }
     ]
   })
 };
